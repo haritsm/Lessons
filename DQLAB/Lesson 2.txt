@@ -1,0 +1,127 @@
+data <- read.csv("mydata.csv", sep=;)
+
+str(data) #baca data kayak gmn
+
+data_intro$ID.Pelanggan <-as.character(data_intro$ID.Pelanggan) #as character biar ngga ikutan dianalisis
+
+data_intro$Jenis.Kelamin <- as.factor(data_intro$Jenis.Kelamin) #as factor biar data jadi kategorik (kualitatif)
+
+library(pracma)
+Modus adalah nilai yang sering muncul dari suatu distribusi (data nominal-data rasio) = nominal dan ordinal. cth: Mode(data_intro$Produk)
+Median adalah nilai tengah dari suatu distribusi (data interval dan rasio) = bertipe interval dan rasio : median(data_intro$Total) 
+Mean adalah rata-rata aritmatik dari suatu distribusi (data interval dan rasio) = bertipe interval dan rasio : mean(data_intro$Pendapatan)
+
+Outlier pake median, jgn mean
+
+Range adalah selisih antara nilai terbesar dan nilai terendah : max(data_intro$Jumlah)-min(data_intro$Jumlah)
+Varians adalah simpangan kuadrat data dari nilai rata-ratanya : var(data_intro$Pendapatan)
+Simpangan baku adalah simpangan data dari nilai rata-ratanya
+	, simpangan baku nama lainnya adalah standard error. 
+	Standard error dapat digunakan untuk melihat keakuratan dari hasil estimasi, 
+	semakin kecil standard error semakin akurat hasil estimasi. : sd(data_intro$Jumlah)
+
+analisis deskriptif : summary(data_intro)
+
+Deskriptif Menggunakan Visualisasi:
+	plot(data_intro$Jenis.Kelamin) #variabel bertipe Factor
+	hist(data_intro$Pendapatan) #variabel bertipe numerik seperti int
+
+Dari hasil analisis deskriptif pada praktek sebelumnya kita mendapatkan:
+
+Profil Pelanggan sebagai berikut:
+Sebagian besar pelanggan adalah berjenis kelamin perempuan.
+Rata-rata pendapatan pelanggan dalam sebulan adalah 875000 (tidak menggunakan ukuran pemusatan mean, karena pada grafik terdapat outlier. Sehinggan ukuran pemusatan yang dipakai adalah median).
+Pelanggan sering membeli produk dalam jumlah 3-4 buah.
+Rata-rata total belanja yang sering dihabiskan adalah 710000.
+Kebanyakan pelanggan sangat puas kepada produk yang dijual.
+Gambaran produk yang dijual sebagai berikut:
+Produk yang sering dibeli adalah produk D.
+Rata-rata harga produk yang terjual sebesar 197500.
+
+Dari hasil statistik deskriptif diatas kita dapat membangun hipotesis, agar analisis data yang kita lakukan kaya informasi yang didapatkan. Pembangunan hipotesis berdasarkan intuisi kita terhadap data yang sudah kita lakukan eksplorasi.
+
+Contoh hipotesis yang dapat kita bangun berdasarkan data diatas adalah sebagai berikut:
+
+Apakah ada hubungan pendapatan dengan total belanja?
+Apakah ada pengaruh suatu produk dengan kepuasan pelanggan?
+Apakah ada hubungan jenis kelamain dengan total belanja?
+
+Hipotesis nihil (Ho) yaitu hipotesis yang berlawanan dengan teori yang akan dibuktikan. Hipotesis alternatif (Ha) adalah hipotesis yang berhubungan dengan teori yang akan dibuktikan.
+yang sering digunakan yaitu z-test, t-test, chi-square test, dan f-test
+P-value adalah peluang terkecil dalam menolak Ho. Sedangkan alpha adalah tingkat kesalahan. Nilai alpha biasanya adalah 1%, 5%, dan 10%. Dalam prakteknya alpha 5% sering digunakan, karena lebih moderat.
+Hipotesis H0 ditolak jika nilai p-value kurang dari alpha (5%), sedangkan jika p-value lebih dari nilai alpha maka yang H0  diterima. Untuk lebih jelasnya dapat dilihat gambar dibawah ini
+
+Statistik Deskriptif adalah statistik yang digunakan untuk analisa data dengan cara menggambarkan data sampel dengan tanpa membuat kesimpulan untuk data populasi. Beberapa hal yang dapat dilakukan adalah penyajian data melalui tabel, grafik, perhitungan modus, median, mean, perhitungan penyebaran data melalui perhitungan rata-rata dan standar deviasi. Statistik Deskriptif digunakan untuk eksplorasi data.
+Statistik Inferensia adalah yaitu statistik yang digunakan untuk menganalisis data sampel dan hasilnya diberlakukan untuk populasi. Beberapa hal yang dapat dilakukan adalah menguji hipotesis dengan statistik uji, seperti chi-square test, student-t test, f-test, z-score test.
+
+Tujuan Analisis berikutnya dari dataset kita adalah untuk mendapatkan informasi berikut:
+
+Bagaimana hubungan pendapatan dengan total belanja.
+Bagaimana pengaruh suatu produk dengan kepuasan pelanggan.
+Bagaimana hubungan jenis kelamin dengan total belanja.
+
+Ada dua cara untuk melihat hubungan antar variabel, yaitu dengan grafik scatter plot dan analisis korelasi. 
+Grafik scatter plot untuk melihat arah hubungan, poisitif dan negatif. 
+Sedangkan analisis korelasi adalah untuk menguji/konfirmasi apakah kedua variabel tersebut memang berhubungan dan 
+sebearapa kuat hubungannya.
+Hipotesis nihil (null): tidak ada hubungan antara kedua variabel.
+Hipotesis alternatif: ada hubungan antara kedua variabel.
+plot(data_intro$Pendapatan,data_intro$Total)
+
+cor.test(data_intro$Pendapatan,data_intro$Total)
+Function cor.test digunakan untuk melihat hubungan secara statistik.
+Pada korelasi test untuk mengujinya kita memakai t-test. Dengan hipotesis sebagai berikut:
+H0 : tidak ada hubungan antara pendapatan dan total belanja.
+Ha : terdapat hubungan antara pendapatan dan total belanja
+
+Hubungan Antara Variabel Kategorik
+Hubungannya diantara keduanya dapat dilihat dengan menggunakan tabulasi silang dan dapat juga dilihat kecenderungannya. Pada hubungan antara variabel kategorik dan kategorik tersebut tidak bisa diketahui seberapa kuat hubungan diantara keduanya dan bagimana pengaruhnya (positif atau negatif). 
+Untuk mengetahui ada hubungan atau tidaknya menggunakan uji statistik chi-square test, dengan hipotesis sebagai berikut:
+
+Null hipotesis: tidak ada hubungan antara kedua variabel
+Hipotesis Alternatif alternatif: ada hubungan antara kedua variabel
+
+Berdasarkan kasus diatas kita akan melihat hubungan antara data kategorik dan kategorik, yaitu variabel jenis produk dan tingkat kepuasan. Sebelum menguji hubungannya, sebaiknya dilakukan tabulasi silang sebagai analisis deskriptif. Selanjutnya analisis inferensia yaitu menguji apakah ada hubungan maka dapat digunakan chi-square test.
+
+Untuk melakukan tabulasi dan uji statistik chi-square test pada R tahapannya sebagai berikut
+
+table(data_intro$Produk,data_intro$Tingkat.Kepuasan)
+chisq.test(table(data_intro$Produk,data_intro$Tingkat.Kepuasan))
+
+Dengan hipotesis sebagai berikut :
+
+H0 : tidak ada hubungan antara jenis produk dan tingkat kepuasan.
+Ha : terdapat hubungan antara jenis produk dan tingkat kepuasan  
+
+Hubungan Antara Variabel Kategorik dan Variabel Numerik
+Hubungannya diantara keduanya dapat dilihat dengan membandingkan rata-rata pada setiap kategori. Jika nilai rata-ratanya berbeda maka kedua variabel memiliki hubungan. Pada hubungan antara variabel kategorik dan numerik tidak bisa diketahui seberapa kuat hubungan diantara keduanya dan bagimana pengaruhnya (positif atau negatif).
+
+Untuk mengetahui ada hubungan atau tidaknya menggunakan uji statistik t-test, dengan hipotesis sebagai berikut
+
+Null hipotesis: tidak ada hubungan antara kedua variabel
+Hipotesis Alternatif alternatif: ada hubungan antara kedua variabel
+
+Selanjutnya analisis inferensia yaitu untuk mengetahui apakah ada perbedaan rata-rata total belanja pada laki-laki dan perempuan maka digunakan statistik uji t-test.
+
+Berdasarkan kasus diatas kita akan melihat hubungan antara data kategorik dan numerik, 
+yaitu variabel jenis kelamin dan total belanja. Sebelum menguji hubungannya, sebaiknya dilihat perbedaan rata-rata total 
+belanja untuk laki-laki dan perempuan dengan visualisasi yaitu menggunakan boxplot. 
+Boxplot grafik statistik dari data dengan komponen lima ukuran statistik yaitu Min, Q1,Q2, Q3, dan Max. 
+Untuk lebih jelasnya mengenai boxplot dapat dilihat gambar dibawah ini
+Untuk melakukan visualisasi boxplot dan uji statistik t-test pada R tahapannya sebagai berikut
+
+boxplot(Total~Jenis.Kelamin,data = data_intro)
+t.test(Total~Jenis.Kelamin,data = data_intro)
+
+Cara analisis yang runtut adalah:
+
+1.Analisis Inferensia
+2.Eksplorasi data
+3.Membuat Hipotesis
+4.Memberi Kesimpulan
+5.Memberikan rekomendasi berdasarkan analisis data
+ 2,3,1,4,5
+
+Sebelum memulai menganalisis data harus dilihat summary per tiap variabel.
+Analisis Deskriptif digunakan untuk membangun sebuah hipotesis.
+Analisis Inferensia digunakan untuk menguji hipotesis.

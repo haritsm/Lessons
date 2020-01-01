@@ -1,0 +1,200 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red255\green255\blue255;\red242\green242\blue242;
+}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c100000\c100000\c100000;\cssrgb\c96078\c96078\c96078;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15280\viewh10480\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Capture, clean, consume\
+\
+NA = missing value\
+\
+NaN juga missing value\
+\
+NULL = 
+\fs32 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 mewakili undefined object dan tidak dianggap oleh vector.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {{\NeXTGraphic Screen Shot 2018-12-30 at 15.22.23.png \width32740 \height12160 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 #Buat variable x yang diisi dengan nilai NA\
+x <- NA\
+#Pengecekan variable x dengan nilai NA menggunakan operator ==\
+x == NA\
+#Pengecekan variable x dengan nilai NA menggunakan function is.na\
+is.na(x)\
+\
+typeof()\
+is.na()\
+\
+#Membuat vector bernama isi.vector dengan isi bilangan, dimana salah satunya memiliki missing value\
+isi.vector <- c(1, 2, 3, NA, 3, 1)\
+#Mengecek keseluruhan tipe data dengan perulangan lapply dan typeof\
+lapply(isi.vector, typeof)\
+#Menggunakan is.na untuk mengecek keberadaan missing value dari tiap elemen pada vector \
+is.na(isi.vector)\
+\
+#Membuat vector dengan 7 elemen termasuk NA dan NULL\
+isi.vector <- c(1, 2, 3, NA, 5, NULL, 7)\
+\
+#Membuat list dengan 3 elemen termasuk NA dan NULL \
+isi.list <- list(1, NULL, 3, NA, 5)\
+#Menghitung jumlah elemen dari isi.list\
+length(isi.list)\
+\
+Inf \
+NaN\
+\
+#Buat variable contoh.nan\
+contoh.nan <- 0/0\
+#Periksa dengan function is.nan\
+is.nan(contoh.nan)\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\fs26 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 > is.na(NaN)\
+[1] TRUE\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\fs26 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 > is.nan(NA)\
+[1] FALSE\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+#Menghitung jumlah NA\
+isi.vector <- c(1,2,NA,4,5,NaN,6)\
+sum(is.na(isi.vector) == TRUE)\
+\
+Factor\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\fs26 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 factor(c("Jan","Feb","Mar"))\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\fs26 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 > #Variable factor bernama faktor.bulan dengan nilai teks "Jan", "Feb", dan "Mar"\
+> faktor.bulan <- factor(c("Jan","Feb","Mar"))\
+\
+> attributes(faktor.bulan)\
+$levels\
+[1] "Feb" "Jan" "Mar"\
+$class\
+[1] "factor"\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+#Variable factor bernama faktor.bulan dengan nilai teks "Jan", "Feb", dan "Mar"\
+faktor.bulan <- factor(c("Jan","Feb","Mar"))\
+levels(faktor.bulan)\
+class(faktor.bulan)\
+\
+#Buatlah factor dengan teks "Jan", "Feb", "Mar","Jan","Mar", dan "Jan"\
+factor(c("Jan", "Feb", "Mar", "Jan", "Mar", "Jan"))\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\fs32 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Dengan demikian, kita simpulkan kembali dari ilustrasi di atas bahwa nilai dari factor sebenarnya adalah nilai bilangan bulat (integer) dengan nilai-nilai kategoris disimpan pada atribut\'a0
+\b levels
+\b0 .\
+\
+As.integer(factor.bulan)\
+\
+#Buatlah factor dengan teks "Jan", "Feb", "Mar","Jan","Mar", dan "Jan"\
+factor.bulan <- factor(c("Jan","Feb","Mar","Jan","Mar","Jan"))\
+#Mengganti levels \
+levels(factor.bulan)[2] <- "Januari"\
+levels(factor.bulan)[3] <- "Maret"\
+factor.bulan\
+\
+#Hitung banka isi di variabel, NULL ga keitung\
+Length(variable)\
+\
+#Variable factor dengan isi vector c("Jan","Feb","Mar","Jan","Mar") \
+factor(c("Jan","Feb","Mar","Jan","Mar"), levels=c("Jan","Feb","Mar"))\
+\
+str()\
+summary()\
+\
+\
+#Membaca dataset dengan read.csv dan dimasukkan ke variable penduduk.dki\
+penduduk.dki <- read.csv("https://academy.dqlab.id/dataset/dkikepadatankelurahan2013.csv", sep=",", check.names=FALSE)\
+str(penduduk.dki)\
+\
+sep=\'93\\t\'94\
+\
+arakter non karakter dan spasi seperti garis miring dan tanda kurung tetap ditampilkan apa adanya. Sedangkan jika menggunakan read.csv dan read.tsv akan diganti menjadi tanda titik.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl360\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Seluruh kolom akan diubah menjadi vector, sedangkan pada read.csv beberapa kolom akan menjadi factor.\cb1 \uc0\u8232 \
+\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Vector teks yang berulang akan tetap dibiarkan apa adanya, tidak diubah menjadi factor. Ini akan mengakibatkan beberapa masalah, salah satunya adalah pada saat plotting data \'96 yang akan kita lihat pada praktek berikutnya.\cb1 \
+\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Kolom kosong \'96 dimana jika kita gunakan read.csv akan diisi dengan nama X, X.1, X.2, dan seterusnya \'96 dihilangkan oleh fungsi read.xlsx ini.\cb1 \
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\pard\tx566\pardeftab720\sl360\partightenfactor0
+\cf2 \
+names(penduduk.dki.csv) \'97> nama2 Kolom saja\
+\
+#Membaca dataset csv\
+penduduk.dki.csv <-read.csv("https://academy.dqlab.id/dataset/dkikepadatankelurahan2013.csv", sep=",")\
+names(penduduk.dki.csv)[1] <- "PERIODE"\
+names(penduduk.dki.csv)[2] <- "PROPINSI"\
+names(penduduk.dki.csv)[c(1:2)] <- c("PERIODE", "PROPINSI")\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\fs26 \cf2 \cb4 penduduk.dki.csv <- penduduk.dki.csv[,!names(penduduk.dki.csv) %in% c("X", "X.1","X.2","X.3","X.4","X.5","X.6","X.7","X.8","X.9","X.10")]\
+\
+\pard\pardeftab720\sl360\sa200\partightenfactor0
+
+\f0\fs32 \cf2 \cb3 Sebagai contoh, untuk mengambil kolom yang mengandung "Perempuan" pada nama-nama kolom dari dataset kependudukan kita gunakan perintah berikut:\
+<- grep(pattern="perempuan", x = names(penduduk.dki.xlsx), ignore.case=TRUE)\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 Yang merupakan daftar posisi dari nama kolom yang mengandung teks "perempuan".\
+\
+#Tampilkan nama-nama kolom yang mengandung kata "perempuan".\
+pola_nama_perempuan <- grep(pattern="perempuan", x = names(penduduk.dki.xlsx), ignore.case=TRUE)\
+penduduk.dki.xlsx$PEREMPUAN35TAHUNKEATAS  <- rowSums(penduduk.dki.xlsx[pola_nama_perempuan])\
+\
+#STRUCTURE TRANSFORMATION\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {{\NeXTGraphic Screen Shot 2018-12-30 at 22.36.16.png \width10440 \height1780 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2018-12-30 at 22.36.23.png \width10280 \height2980 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs32 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\fs26 \cf2 \cb4 melt(data=penduduk.dki.xlsx, id.vars=c( "NAMA.KECAMATAN", "NAMA.KELURAHAN"), measure.vars = c("35-39.Laki-Laki", "35-39.Perempuan"), variable.name = "DEMOGRAFIK", value.name="JUMLAH")\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\fs32 \cf2 \cb3 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {{\NeXTGraphic Screen Shot 2018-12-30 at 22.39.30.png \width12080 \height3040 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+penduduk.dki.transform[c("RENTANG.UMUR", "JENIS.KELAMIN")] <- colsplit(penduduk.dki.transform$DEMOGRAFIK,"\\\\.",c("RENTANG.UMUR","JENIS.KELAMIN"))\
+penduduk.dki.transform$DEMOGRAFIK <- NULL\
+penduduk.dki.transform\
+}
